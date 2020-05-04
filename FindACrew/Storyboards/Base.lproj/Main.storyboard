@@ -10,13 +10,19 @@
         <scene sceneID="fsN-Ra-PkE">
             <objects>
                 <tableViewController id="KFv-9d-l9X" customClass="PersonSearchTableViewController" customModule="FindACrew" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aKM-xs-YvM">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aKM-xs-YvM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="u4j-PW-d3h">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonCell" id="ria-MH-gmI" customClass="PersonTableViewCell" customModule="FindACrew" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ria-MH-gmI" id="P63-Jo-xZp">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -65,6 +71,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Find a Crew" id="6MM-vG-g1i"/>
+                    <connections>
+                        <outlet property="searchBar" destination="u4j-PW-d3h" id="0QX-9G-NeZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jod-Vc-1yo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

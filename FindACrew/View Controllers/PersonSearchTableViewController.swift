@@ -9,28 +9,47 @@
 import UIKit
 
 class PersonSearchTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var searchBar: UISearchBar?
+    
+    let personController = PersonController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar?.delegate = self
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return personController.people.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.reuseIdentifier, for: indexPath) as! PersonTableViewCell
-
+        
         // Configure the cell...
-        cell.nameLabel.text = "Leia Organa"
-        cell.genderLabel.text = "Gender: female"
-        cell.birthYearLabel.text = "Birth Year: 19BBY"
+        let person = personController.people[indexPath.row]
+        cell.nameLabel.text = person.name
+        cell.genderLabel.text = person.gender
+        cell.birthYearLabel.text = person.birthYear
         return cell
+    }
+}
+
+extension PersonSearchTableViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = searchBar.text else {
+            return
+        }
+        personController.searchForPeopleWith(searchTerm: searchTerm) {
+            DispatchQueue.main.async{
+                self.tableView.reloadData()
+            }
+        }
     }
 }
